@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ark</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --purple: #8b5cf6;
+  --purple-glow: rgba(139,92,246,0.75);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #111;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* ================= PARTICLES ================= */
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: var(--purple);
+  border-radius: 50%;
+  opacity: 0.35;
+  pointer-events: none;
+  animation: float 14s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(110vh); }
+  to { transform: translateY(-10vh); }
+}
+
+/* ================= PASSWORD ================= */
+#lock {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.box {
+  background: #fafafa;
+  padding: 30px;
+  width: 320px;
+  border-radius: 14px;
+  box-shadow: 0 0 30px var(--purple-glow);
+  text-align: left;
+}
+
+.box h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--purple);
+}
+
+.box span {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.box input {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid var(--purple);
+}
+
+.box button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: var(--purple);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#error {
+  margin-top: 10px;
+  color: #e11d48;
+  display: none;
+}
+
+/* ================= HEADER ================= */
+header {
+  margin-top: 90px;
+}
+
+.name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 64px;
+  color: var(--purple);
+  text-shadow: 0 0 25px var(--purple-glow);
+  animation: nameFloat 4s ease-in-out infinite;
+}
+
+@keyframes nameFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.line {
+  width: 140px;
+  height: 4px;
+  background: var(--purple);
+  margin: 12px auto;
+  animation: lineGrow 1.2s ease forwards;
+}
+
+@keyframes lineGrow {
+  from { width: 0; }
+  to { width: 140px; }
+}
+
+/* ================= SUBTEXT ================= */
+.subtitle {
+  margin-top: 18px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #666;
+  animation: fadeText 2s ease forwards;
+}
+
+@keyframes fadeText {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ================= MUSIC BOX ================= */
+.music-box {
+  margin: 35px auto;
+  width: 360px;
+  background: #f2f2f2;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px var(--purple-glow);
+  animation: pop 1.2s ease forwards;
+}
+
+@keyframes pop {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ================= JOIN BUTTON ================= */
+.join {
+  margin-top: 25px;
+  padding: 12px 34px;
+  background: var(--purple);
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  display: inline-block;
+  box-shadow: 0 0 20px var(--purple-glow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.join:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px var(--purple-glow);
+}
+
+/* ================= SERVERS ================= */
+.servers-wrapper {
+  margin: 90px auto;
+  width: 80%;
+  max-width: 900px;
+  background: #ededed;
+  padding: 30px;
+  border-radius: 18px;
+}
+
+.servers-wrapper h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--purple);
+  margin-bottom: 20px;
+}
+
+.servers {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 160px;
+  height: 90px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 18px var(--purple-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: transform 0.35s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div id="lock">
+  <div class="box">
+    <h2>Trust Who???</h2>
+    <span>[Trust A??]</span>
+    <input type="password" id="pass" placeholder="Enter password">
+    <button id="enterPass">ENTER</button>
+    <div id="error">Wrong password</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<header>
+  <div class="name">ARK</div>
+  <div class="line"></div>
+  <div class="subtitle">NAGMAMAHAL REVSHIT.</div>
+</header>
+
+<div class="music-box">
+  <strong>MUSIC</strong><br>
+  <span>Now Playing: GUAP (YELLOWTAPES VOL.1)</span>
+</div>
+
+<div class="join">JOIN REVSHIT</div>
+
+<div class="servers-wrapper">
+  <h2>Servers List</h2>
+  <div class="servers">
+    <div class="card">REVSHIT</div>
+    <div class="card">ENKAI</div>
+    <div class="card">4LUV</div>
+    <div class="card">REVGNG</div>
+  </div>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const correctPassword = "TrustArk";
+const pass = document.getElementById("pass");
+const btn = document.getElementById("enterPass");
+const lock = document.getElementById("lock");
+const error = document.getElementById("error");
+const music = document.getElementById("music");
+
+btn.onclick = () => {
+  if (pass.value === correctPassword) {
+    lock.style.display = "none";
+    music.volume = 0.7;
+    music.play().catch(()=>{});
+  } else {
+    error.style.display = "block";
+  }
+};
+
+pass.addEventListener("keydown", e => {
+  if (e.key === "Enter") btn.click();
+});
+
+/* PARTICLES */
+for (let i = 0; i < 45; i++) {
+  const p = document.createElement("div");
+  p.className = "particle";
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.animationDuration = (8 + Math.random() * 10) + "s";
+  document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
